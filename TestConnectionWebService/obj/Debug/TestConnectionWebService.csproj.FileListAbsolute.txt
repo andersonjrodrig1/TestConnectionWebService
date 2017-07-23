@@ -6,3 +6,11 @@ D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debu
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\obj\Debug\TestConnectionWebService.csprojResolveAssemblyReference.cache
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\obj\Debug\TestConnectionWebService.exe
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\obj\Debug\TestConnectionWebService.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceEntity.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceEntity.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceBO.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceDAO.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceCore.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceBO.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceDAO.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebServiceCore.pdb
