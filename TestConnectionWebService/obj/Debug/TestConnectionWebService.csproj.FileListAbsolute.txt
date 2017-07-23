@@ -1,0 +1,8 @@
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebService.exe.config
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebService.exe
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\TestConnectionWebService.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\Newtonsoft.Json.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\bin\Debug\Newtonsoft.Json.xml
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\obj\Debug\TestConnectionWebService.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\obj\Debug\TestConnectionWebService.exe
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebService\obj\Debug\TestConnectionWebService.pdb
