@@ -22,9 +22,9 @@ namespace TestConnectionWebServiceDAO
 
         public string BuscarPaginas(string userAgent, string contentType, string body)
         {
-            WsRequisicao ws = new WsRequisicao();
+            WsRequisicao ws = new WsRequisicao(urlWebService, usuarioWebService, senhaWebService);
 
-            string resultado = ws.ExecutarRequisicao(urlWebService, userAgent, contentType, null, MetodosWebService.GET, body, usuarioWebService, senhaWebService);
+            string resultado = ws.ExecutarRequisicao(userAgent, contentType, null, MetodosWebService.GET, body);
 
             return resultado;
         }

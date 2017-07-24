@@ -12,5 +12,11 @@ namespace TestConnectionWebServiceEntity
         POST,
         PUT,
         DELETE
-    };
+    }
+
+    public enum Protocolo
+    {
+        HTTP,
+        HTTPS
+    }
 }

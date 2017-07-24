@@ -11,8 +11,20 @@ namespace TestConnectionWebServiceCore
 {
     public class WsConexao
     {
-        public string Executar(string urlWebService, string userAgent, string contentType, MetodosWebService method, 
-            string body, string usuarioWebService, string senhaWebService)
+        private string urlWebService { get; set; }
+        private string usuarioWebService { get; set; }
+        private string senhaWebService { get; set; }
+        private WebProxy proxy;
+
+        public WsConexao(string urlWebService, string usuarioWebService, string senhaWebService)
+        {
+            this.urlWebService = urlWebService;
+            this.usuarioWebService = usuarioWebService;
+            this.senhaWebService = senhaWebService;
+            this.proxy = null;
+        }
+
+        public string Executar(string userAgent, string contentType, MetodosWebService method, WebHeaderCollection header, string body)
         {
             string result = "";
 
@@ -20,12 +32,16 @@ namespace TestConnectionWebServiceCore
             {
                 var httpResquest = (HttpWebRequest)WebRequest.Create(urlWebService);
                 httpResquest.Method = method.ToString();
-                httpResquest.ContentType = contentType;
+
+                if(!string.IsNullOrEmpty(contentType))
+                    httpResquest.ContentType = contentType;
 
                 if(!string.IsNullOrEmpty(userAgent))
                     httpResquest.UserAgent = userAgent;
 
-                if(!string.IsNullOrEmpty(usuarioWebService) && !string.IsNullOrEmpty(senhaWebService))
+                if(header != null)
+                    httpResquest.Headers = header;
+                else if(!string.IsNullOrEmpty(usuarioWebService) && !string.IsNullOrEmpty(senhaWebService))
                 {
                     NetworkCredential credential = new NetworkCredential();
                     credential.UserName = usuarioWebService.Trim();
@@ -33,6 +49,9 @@ namespace TestConnectionWebServiceCore
 
                     httpResquest.Credentials = credential;
                 }
+
+                if (proxy != null)
+                    httpResquest.Proxy = proxy;
 
                 if (method == MetodosWebService.POST && !string.IsNullOrEmpty(body))
                 {

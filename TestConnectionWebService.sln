@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectionWebServiceCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectionWebServiceUtil", "TestConnectionWebServiceUtil\TestConnectionWebServiceUtil.csproj", "{6B770051-D980-4002-8EE3-D78402DA2053}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectionWebServiceClient", "TestConnectionWebServiceClient\TestConnectionWebServiceClient.csproj", "{31DD4EA6-A997-49F1-9358-F70E74681D00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectionWebServiceWeb", "TestConnectionWebServiceWeb\TestConnectionWebServiceWeb.csproj", "{499C5061-9582-467D-894D-E19EFFEAD3D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{6B770051-D980-4002-8EE3-D78402DA2053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B770051-D980-4002-8EE3-D78402DA2053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B770051-D980-4002-8EE3-D78402DA2053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31DD4EA6-A997-49F1-9358-F70E74681D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31DD4EA6-A997-49F1-9358-F70E74681D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31DD4EA6-A997-49F1-9358-F70E74681D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31DD4EA6-A997-49F1-9358-F70E74681D00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499C5061-9582-467D-894D-E19EFFEAD3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499C5061-9582-467D-894D-E19EFFEAD3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499C5061-9582-467D-894D-E19EFFEAD3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499C5061-9582-467D-894D-E19EFFEAD3D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,7 +16,7 @@ namespace TestConnectionWebService
         static void Main(string[] args)
         {
             string url = "http://jsonplaceholder.typicode.com/posts";
-            string contentType = "application/x-www-form-urlencoded";
+            string contentType = "application/json";
             string userAgent = "RequisicaoWebDemo";
             string body = "";
             string usuario = "";

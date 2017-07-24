@@ -1,0 +1,9 @@
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceClient.exe.config
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceClient.exe
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceClient.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.Properties.Resources.resources
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.csproj.GenerateResource.Cache
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.exe
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.frmPrincipal.resources
