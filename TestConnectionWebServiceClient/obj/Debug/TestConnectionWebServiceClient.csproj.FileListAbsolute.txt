@@ -7,3 +7,13 @@ D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\ob
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.exe
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.pdb
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.frmPrincipal.resources
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceBO.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceDAO.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceEntity.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\Newtonsoft.Json.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceCore.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceBO.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceDAO.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceEntity.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\Newtonsoft.Json.xml
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceCore.pdb

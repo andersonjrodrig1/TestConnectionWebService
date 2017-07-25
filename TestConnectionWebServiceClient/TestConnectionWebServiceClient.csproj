@@ -78,5 +78,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestConnectionWebServiceBO\TestConnectionWebServiceBO.csproj">
+      <Project>{929fd034-f0c3-417f-91e4-f4efd541dc23}</Project>
+      <Name>TestConnectionWebServiceBO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
