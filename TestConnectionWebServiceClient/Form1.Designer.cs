@@ -34,10 +34,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtContent = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtSenhaB = new System.Windows.Forms.TextBox();
-            this.txtUserB = new System.Windows.Forms.TextBox();
-            this.txtSenhaA = new System.Windows.Forms.TextBox();
-            this.txtUserA = new System.Windows.Forms.TextBox();
+            this.txtHeaderValueB = new System.Windows.Forms.TextBox();
+            this.txtHeaderKeyB = new System.Windows.Forms.TextBox();
+            this.txtHeaderValueA = new System.Windows.Forms.TextBox();
+            this.txtHeaderKeyA = new System.Windows.Forms.TextBox();
             this.rdbBasic = new System.Windows.Forms.RadioButton();
             this.rdbHeader = new System.Windows.Forms.RadioButton();
             this.rdbUserPass = new System.Windows.Forms.RadioButton();
@@ -52,21 +52,25 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbxResultado = new System.Windows.Forms.RichTextBox();
+            this.rtbResultado = new System.Windows.Forms.RichTextBox();
+            this.lblBody = new System.Windows.Forms.Label();
+            this.rtbBody = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rtbBody);
+            this.groupBox1.Controls.Add(this.lblBody);
             this.groupBox1.Controls.Add(this.rdbSemAutenticacao);
             this.groupBox1.Controls.Add(this.txtAgent);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtContent);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtSenhaB);
-            this.groupBox1.Controls.Add(this.txtUserB);
-            this.groupBox1.Controls.Add(this.txtSenhaA);
-            this.groupBox1.Controls.Add(this.txtUserA);
+            this.groupBox1.Controls.Add(this.txtHeaderValueB);
+            this.groupBox1.Controls.Add(this.txtHeaderKeyB);
+            this.groupBox1.Controls.Add(this.txtHeaderValueA);
+            this.groupBox1.Controls.Add(this.txtHeaderKeyA);
             this.groupBox1.Controls.Add(this.rdbBasic);
             this.groupBox1.Controls.Add(this.rdbHeader);
             this.groupBox1.Controls.Add(this.rdbUserPass);
@@ -82,7 +86,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(267, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(850, 166);
+            this.groupBox1.Size = new System.Drawing.Size(850, 184);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados da Conexão";
@@ -100,15 +104,15 @@
             // 
             // txtAgent
             // 
-            this.txtAgent.Location = new System.Drawing.Point(534, 110);
+            this.txtAgent.Location = new System.Drawing.Point(504, 110);
             this.txtAgent.Name = "txtAgent";
-            this.txtAgent.Size = new System.Drawing.Size(154, 20);
+            this.txtAgent.Size = new System.Drawing.Size(137, 20);
             this.txtAgent.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(531, 88);
+            this.label6.Location = new System.Drawing.Point(501, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 19;
@@ -116,47 +120,47 @@
             // 
             // txtContent
             // 
-            this.txtContent.Location = new System.Drawing.Point(374, 110);
+            this.txtContent.Location = new System.Drawing.Point(361, 110);
             this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(154, 20);
+            this.txtContent.Size = new System.Drawing.Size(137, 20);
             this.txtContent.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(371, 88);
+            this.label5.Location = new System.Drawing.Point(358, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Content Type";
             // 
-            // txtSenhaB
+            // txtHeaderValueB
             // 
-            this.txtSenhaB.Location = new System.Drawing.Point(183, 136);
-            this.txtSenhaB.Name = "txtSenhaB";
-            this.txtSenhaB.Size = new System.Drawing.Size(172, 20);
-            this.txtSenhaB.TabIndex = 8;
+            this.txtHeaderValueB.Location = new System.Drawing.Point(183, 136);
+            this.txtHeaderValueB.Name = "txtHeaderValueB";
+            this.txtHeaderValueB.Size = new System.Drawing.Size(172, 20);
+            this.txtHeaderValueB.TabIndex = 8;
             // 
-            // txtUserB
+            // txtHeaderKeyB
             // 
-            this.txtUserB.Location = new System.Drawing.Point(9, 136);
-            this.txtUserB.Name = "txtUserB";
-            this.txtUserB.Size = new System.Drawing.Size(168, 20);
-            this.txtUserB.TabIndex = 7;
+            this.txtHeaderKeyB.Location = new System.Drawing.Point(9, 136);
+            this.txtHeaderKeyB.Name = "txtHeaderKeyB";
+            this.txtHeaderKeyB.Size = new System.Drawing.Size(168, 20);
+            this.txtHeaderKeyB.TabIndex = 7;
             // 
-            // txtSenhaA
+            // txtHeaderValueA
             // 
-            this.txtSenhaA.Location = new System.Drawing.Point(183, 110);
-            this.txtSenhaA.Name = "txtSenhaA";
-            this.txtSenhaA.Size = new System.Drawing.Size(172, 20);
-            this.txtSenhaA.TabIndex = 6;
+            this.txtHeaderValueA.Location = new System.Drawing.Point(183, 110);
+            this.txtHeaderValueA.Name = "txtHeaderValueA";
+            this.txtHeaderValueA.Size = new System.Drawing.Size(172, 20);
+            this.txtHeaderValueA.TabIndex = 6;
             // 
-            // txtUserA
+            // txtHeaderKeyA
             // 
-            this.txtUserA.Location = new System.Drawing.Point(9, 110);
-            this.txtUserA.Name = "txtUserA";
-            this.txtUserA.Size = new System.Drawing.Size(168, 20);
-            this.txtUserA.TabIndex = 5;
+            this.txtHeaderKeyA.Location = new System.Drawing.Point(9, 110);
+            this.txtHeaderKeyA.Name = "txtHeaderKeyA";
+            this.txtHeaderKeyA.Size = new System.Drawing.Size(168, 20);
+            this.txtHeaderKeyA.TabIndex = 5;
             // 
             // rdbBasic
             // 
@@ -202,6 +206,7 @@
             this.btnSalvar.TabIndex = 12;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // cmbMetodo
             // 
@@ -264,10 +269,6 @@
             // 
             // cmbProtocolo
             // 
-            this.cmbProtocolo.AutoCompleteCustomSource.AddRange(new string[] {
-            "A",
-            "B",
-            "C"});
             this.cmbProtocolo.FormattingEnabled = true;
             this.cmbProtocolo.Items.AddRange(new object[] {
             "HTTP://",
@@ -302,24 +303,41 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Métodos";
             // 
-            // tbxResultado
+            // rtbResultado
             // 
-            this.tbxResultado.BackColor = System.Drawing.SystemColors.Window;
-            this.tbxResultado.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.tbxResultado.Location = new System.Drawing.Point(267, 184);
-            this.tbxResultado.Margin = new System.Windows.Forms.Padding(5);
-            this.tbxResultado.Name = "tbxResultado";
-            this.tbxResultado.ReadOnly = true;
-            this.tbxResultado.Size = new System.Drawing.Size(850, 311);
-            this.tbxResultado.TabIndex = 13;
-            this.tbxResultado.Text = "";
+            this.rtbResultado.BackColor = System.Drawing.SystemColors.Window;
+            this.rtbResultado.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbResultado.Location = new System.Drawing.Point(267, 204);
+            this.rtbResultado.Margin = new System.Windows.Forms.Padding(5);
+            this.rtbResultado.Name = "rtbResultado";
+            this.rtbResultado.ReadOnly = true;
+            this.rtbResultado.Size = new System.Drawing.Size(850, 291);
+            this.rtbResultado.TabIndex = 13;
+            this.rtbResultado.Text = "";
+            // 
+            // lblBody
+            // 
+            this.lblBody.AutoSize = true;
+            this.lblBody.Location = new System.Drawing.Point(644, 88);
+            this.lblBody.Name = "lblBody";
+            this.lblBody.Size = new System.Drawing.Size(31, 13);
+            this.lblBody.TabIndex = 21;
+            this.lblBody.Text = "Body";
+            // 
+            // rtbBody
+            // 
+            this.rtbBody.Location = new System.Drawing.Point(647, 106);
+            this.rtbBody.Name = "rtbBody";
+            this.rtbBody.Size = new System.Drawing.Size(197, 73);
+            this.rtbBody.TabIndex = 22;
+            this.rtbBody.Text = "";
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 509);
-            this.Controls.Add(this.tbxResultado);
+            this.Controls.Add(this.rtbResultado);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPrincipal";
@@ -344,10 +362,10 @@
         private System.Windows.Forms.ComboBox cmbMetodo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.TextBox txtSenhaB;
-        private System.Windows.Forms.TextBox txtUserB;
-        private System.Windows.Forms.TextBox txtSenhaA;
-        private System.Windows.Forms.TextBox txtUserA;
+        private System.Windows.Forms.TextBox txtHeaderValueB;
+        private System.Windows.Forms.TextBox txtHeaderKeyB;
+        private System.Windows.Forms.TextBox txtHeaderValueA;
+        private System.Windows.Forms.TextBox txtHeaderKeyA;
         private System.Windows.Forms.RadioButton rdbBasic;
         private System.Windows.Forms.RadioButton rdbHeader;
         private System.Windows.Forms.RadioButton rdbUserPass;
@@ -355,8 +373,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtContent;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox tbxResultado;
+        private System.Windows.Forms.RichTextBox rtbResultado;
         private System.Windows.Forms.RadioButton rdbSemAutenticacao;
+        private System.Windows.Forms.RichTextBox rtbBody;
+        private System.Windows.Forms.Label lblBody;
     }
 }
 

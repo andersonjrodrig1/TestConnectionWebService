@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestConnectionWebServiceBO;
 using TestConnectionWebServiceEntity;
+using TestConnectionWebServiceUtil;
 
 namespace TestConnectionWebService
 {
@@ -21,11 +22,30 @@ namespace TestConnectionWebService
             string body = "";
             string usuario = "";
             string senha = "";
+            string strPaginas = "";
 
-            string paginas = new PaginaBO(url, usuario, senha).BuscarPagina(userAgent, contentType, body);
+            try
+            {
+                strPaginas = new PaginaBO(url, usuario, senha).BuscarPagina(userAgent, contentType, body);
+                Pagina[] paginas = Util.Deserializar<Pagina[]>(strPaginas);
 
-            Console.Write(paginas);
+                strPaginas = "";
 
+                foreach (var pag in paginas)
+                {
+                    strPaginas += "---------------------------------------------------------------------------------------------------\n";
+                    strPaginas += pag.id + "\n";
+                    strPaginas += pag.userId + "\n";
+                    strPaginas += pag.title + "\n";
+                    strPaginas += pag.body + "\n";
+                }
+            }
+            catch (Exception ex)
+            {
+                strPaginas = ex.ToString();
+            }            
+
+            Console.Write(strPaginas);
             Console.ReadKey();
         }        
     }

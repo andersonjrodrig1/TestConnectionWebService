@@ -19,12 +19,38 @@ namespace TestConnectionWebServiceClient
             CenterToScreen();
 
             rdbSemAutenticacao.Checked = true;
-            txtUserB.Visible = false;
-            txtSenhaB.Visible = false;
+            txtHeaderKeyB.Visible = false;
+            txtHeaderValueB.Visible = false;
+            lblBody.Visible = false;
+            rtbBody.Visible = false;
         }
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
+            if (ValidaCamposObrigatorios())
+            {
+                string urlWebService = cmbProtocolo.Text.ToLower() + txtUrl.Text;
+                string metodo = cmbMetodo.Text;
+                string contentType = txtContent.Text ;
+                string userAgent = txtAgent.Text;
+                string body = "";
+                string usuario = txtHeaderKeyA.Text;
+                string senha = txtHeaderValueA.Text;
+                string usuarioB = "";
+                string senhaB = "";
+
+                rtbResultado.Text = new PaginaBO(urlWebService, usuario, senha).BuscarPagina(userAgent, contentType, body);
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show("Informe o Nome do Método", "Atenção!");
+                return;
+            }
+
             if (ValidaCamposObrigatorios())
             {
 
@@ -53,7 +79,7 @@ namespace TestConnectionWebServiceClient
 
             if (rdbUserPass.Checked || rdbBasic.Checked)
             {
-                if(string.IsNullOrEmpty(txtUserA.Text) || string.IsNullOrEmpty(txtSenhaA.Text))
+                if(string.IsNullOrEmpty(txtHeaderKeyA.Text) || string.IsNullOrEmpty(txtHeaderValueA.Text))
                 {
                     MessageBox.Show("Informe Usuario e/ou Senha", "Atenção!");
                     return false;
@@ -62,7 +88,7 @@ namespace TestConnectionWebServiceClient
 
             if (rdbHeader.Checked)
             {
-                if (string.IsNullOrEmpty(txtUserA.Text) || string.IsNullOrEmpty(txtSenhaA.Text) || string.IsNullOrEmpty(txtUserB.Text) || string.IsNullOrEmpty(txtSenhaB.Text))
+                if (string.IsNullOrEmpty(txtHeaderKeyA.Text) || string.IsNullOrEmpty(txtHeaderValueA.Text) || string.IsNullOrEmpty(txtHeaderKeyB.Text) || string.IsNullOrEmpty(txtHeaderValueB.Text))
                 {
                     MessageBox.Show("Informe os dados do Header", "Atenção!");
                     return false;
@@ -79,6 +105,11 @@ namespace TestConnectionWebServiceClient
                 MessageBox.Show("Selecione o Método", "Atenção!");
                 rdbSemAutenticacao.Checked = true;
             }
+            else
+            {
+                txtHeaderKeyB.Visible = false;
+                txtHeaderValueB.Visible = false;
+            }
         }
 
         private void rdbBasic_Click(object sender, EventArgs e)
@@ -87,6 +118,11 @@ namespace TestConnectionWebServiceClient
             {
                 MessageBox.Show("Selecione o Método", "Atenção!");
                 rdbSemAutenticacao.Checked = true;
+            }
+            else
+            {
+                txtHeaderKeyB.Visible = false;
+                txtHeaderValueB.Visible = false;
             }
         }
 
@@ -97,20 +133,31 @@ namespace TestConnectionWebServiceClient
                 MessageBox.Show("Selecione o Método", "Atenção!");
                 rdbSemAutenticacao.Checked = true;
             }
+            else
+            {
+                txtHeaderKeyB.Visible = true;
+                txtHeaderValueB.Visible = true;
+            }
         }
 
         private void cmbMetodo_SelectedValueChanged(object sender, EventArgs e)
         {
             if(cmbMetodo.SelectedIndex == 1)
             {
-                txtUserB.Visible = true;
-                txtSenhaB.Visible = true;
+                lblBody.Visible = true;
+                rtbBody.Visible = true;
+                txtHeaderKeyB.Visible = true;
+                txtHeaderValueB.Visible = true;
             }
             else
             {
-                txtUserB.Visible = false;
-                txtSenhaB.Visible = false;
+                lblBody.Visible = false;
+                rtbBody.Visible = false;
+                txtHeaderKeyB.Visible = false;
+                txtHeaderValueB.Visible = false;
             }
+
+            txtContent.Text = "application/json";
         }
     }
 }

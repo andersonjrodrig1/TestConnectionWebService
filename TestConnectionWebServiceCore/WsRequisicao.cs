@@ -23,7 +23,8 @@ namespace TestConnectionWebServiceCore
             this.Proxy = null;
         }
 
-        public string ExecutarRequisicao(string userAgent, string contentType, Dictionary<string, string> parametros, MetodosWebService method, string body, string headerUsuario = null, string headerSenha = null)
+        public string ExecutarRequisicao(string userAgent, string contentType, Dictionary<string, string> parametros, 
+            MetodosWebService method, string body, string headerUsuario = null, string headerSenha = null, bool autenticacao = false)
         {
             WsConexao ws = new WsConexao(urlWebService, usuarioWebService, senhaWebService);
             WebHeaderCollection header = null;
@@ -43,7 +44,7 @@ namespace TestConnectionWebServiceCore
 
             urlWebService = urlWebService.Substring(0, urlWebService.Length - 1);
 
-            return ws.Executar(userAgent, contentType, method, header, body);
+            return ws.Executar(userAgent, contentType, method, header, body, autenticacao);
         }
 
         private WebHeaderCollection AutenticarHeader(string headerUsuario, string usuario, string headerSenha, string senha)

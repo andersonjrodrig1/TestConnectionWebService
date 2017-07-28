@@ -24,7 +24,7 @@ namespace TestConnectionWebServiceCore
             this.proxy = null;
         }
 
-        public string Executar(string userAgent, string contentType, MetodosWebService method, WebHeaderCollection header, string body)
+        public string Executar(string userAgent, string contentType, MetodosWebService method, WebHeaderCollection header, string body, bool autenticacao = false)
         {
             string result = "";
 
@@ -39,9 +39,15 @@ namespace TestConnectionWebServiceCore
                 if(!string.IsNullOrEmpty(userAgent))
                     httpResquest.UserAgent = userAgent;
 
-                if(header != null)
+                if (autenticacao)
+                {
+                    SetAutenticationBasic(httpResquest, usuarioWebService, senhaWebService);
+                }
+                else if (header != null)
+                {
                     httpResquest.Headers = header;
-                else if(!string.IsNullOrEmpty(usuarioWebService) && !string.IsNullOrEmpty(senhaWebService))
+                }
+                else if (!string.IsNullOrEmpty(usuarioWebService) && !string.IsNullOrEmpty(senhaWebService))
                 {
                     NetworkCredential credential = new NetworkCredential();
                     credential.UserName = usuarioWebService.Trim();
@@ -73,6 +79,11 @@ namespace TestConnectionWebServiceCore
             }
 
             return result;
+        }
+
+        private static void SetAutenticationBasic(HttpWebRequest httpRequest, string usuario, string senha)
+        {
+
         }
     }
 }
