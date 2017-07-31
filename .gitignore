@@ -1,4 +1,4 @@
 *.dll
 *.pdb
-/TestConnectionWebService/bin/Debug/*.exe
-/TestConnectionWebServiceWeb/obj/Debug/*.cache
+*.exe
+*.cache
