@@ -23,23 +23,29 @@ namespace TestConnectionWebServiceClient
             txtHeaderValueB.Visible = false;
             lblBody.Visible = false;
             rtbBody.Visible = false;
+            txtHeaderKeyA.Enabled = false;
+            txtHeaderValueA.Enabled = false;
         }
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
             if (ValidaCamposObrigatorios())
             {
-                string urlWebService = cmbProtocolo.Text.ToLower() + txtUrl.Text;
-                string metodo = cmbMetodo.Text;
+                string urlWebService = txtUrl.Text;
                 string contentType = txtContent.Text ;
                 string userAgent = txtAgent.Text;
-                string body = "";
-                string usuario = txtHeaderKeyA.Text;
-                string senha = txtHeaderValueA.Text;
-                string usuarioB = "";
-                string senhaB = "";
+                string body = rtbBody.Text;
+                string keyA = txtHeaderKeyA.Text;
+                string valueA = txtHeaderValueA.Text;
+                string keyB = txtHeaderKeyB.Text;
+                string valueB = txtHeaderValueB.Text;
 
-                rtbResultado.Text = new PaginaBO(urlWebService, usuario, senha).BuscarPagina(userAgent, contentType, body);
+                int metodo = cmbMetodo.SelectedIndex;
+
+                bool isBasic = rdbBasic.Checked ? true : false;
+                bool isHeader = rdbHeader.Checked ? true : false;
+
+                rtbResultado.Text = new PaginaBO(urlWebService, keyA, valueA).BuscarDadosWebService(userAgent, contentType, body, metodo, keyB, valueB, isHeader, isBasic);
             }
         }
 
@@ -53,18 +59,25 @@ namespace TestConnectionWebServiceClient
 
             if (ValidaCamposObrigatorios())
             {
+                string nmMetodo = txtNome.Text;
+                string urlWebService = txtUrl.Text;
+                string contentType = txtContent.Text;
+                string userAgent = txtAgent.Text;
+                string body = rtbBody.Text;
+                string keyA = txtHeaderKeyA.Text;
+                string valueA = txtHeaderValueA.Text;
+                string keyB = txtHeaderKeyB.Text;
+                string valueB = txtHeaderValueB.Text;
 
+                int metodo = cmbMetodo.SelectedIndex;
+
+                bool isBasic = rdbBasic.Checked ? true : false;
+                bool isHeader = rdbHeader.Checked ? true : false;
             }
         }
 
         private bool ValidaCamposObrigatorios()
         {
-            if(cmbProtocolo.SelectedIndex < 0)
-            {
-                MessageBox.Show("Informe o Protocolo", "Atenção!");
-                return false;
-            }
-
             if (string.IsNullOrEmpty(txtUrl.Text))
             {
                 MessageBox.Show("Informe a Url do WebService", "Atenção!");
@@ -98,6 +111,14 @@ namespace TestConnectionWebServiceClient
             return true;
         }
 
+        private void rdbSemAutenticacao_CheckedChanged(object sender, EventArgs e)
+        {
+            txtHeaderKeyA.Enabled = false;
+            txtHeaderValueA.Enabled = false;
+            txtHeaderKeyB.Visible = false;
+            txtHeaderValueB.Visible = false;
+        }
+
         private void rdbUserPass_Click(object sender, EventArgs e)
         {
             if (cmbMetodo.SelectedIndex < 0)
@@ -109,6 +130,8 @@ namespace TestConnectionWebServiceClient
             {
                 txtHeaderKeyB.Visible = false;
                 txtHeaderValueB.Visible = false;
+                txtHeaderKeyA.Enabled = true;
+                txtHeaderValueA.Enabled = true;
             }
         }
 
@@ -123,6 +146,8 @@ namespace TestConnectionWebServiceClient
             {
                 txtHeaderKeyB.Visible = false;
                 txtHeaderValueB.Visible = false;
+                txtHeaderKeyA.Enabled = true;
+                txtHeaderValueA.Enabled = true;
             }
         }
 
@@ -137,6 +162,8 @@ namespace TestConnectionWebServiceClient
             {
                 txtHeaderKeyB.Visible = true;
                 txtHeaderValueB.Visible = true;
+                txtHeaderKeyA.Enabled = true;
+                txtHeaderValueA.Enabled = true;
             }
         }
 
@@ -144,10 +171,19 @@ namespace TestConnectionWebServiceClient
         {
             if(cmbMetodo.SelectedIndex == 1)
             {
+                if (!rdbSemAutenticacao.Checked)
+                {
+                    txtHeaderKeyB.Visible = true;
+                    txtHeaderValueB.Visible = true;
+                }
+                else
+                {
+                    txtHeaderKeyB.Visible = false;
+                    txtHeaderValueB.Visible = false;
+                }
+
                 lblBody.Visible = true;
                 rtbBody.Visible = true;
-                txtHeaderKeyB.Visible = true;
-                txtHeaderValueB.Visible = true;
             }
             else
             {

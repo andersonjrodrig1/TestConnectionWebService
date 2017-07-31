@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rtbBody = new System.Windows.Forms.RichTextBox();
+            this.lblBody = new System.Windows.Forms.Label();
             this.rdbSemAutenticacao = new System.Windows.Forms.RadioButton();
             this.txtAgent = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,16 +47,12 @@
             this.cmbMetodo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnExecutar = new System.Windows.Forms.Button();
             this.txtUrl = new System.Windows.Forms.TextBox();
-            this.cmbProtocolo = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rtbResultado = new System.Windows.Forms.RichTextBox();
-            this.lblBody = new System.Windows.Forms.Label();
-            this.rtbBody = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,10 +76,8 @@
             this.groupBox1.Controls.Add(this.cmbMetodo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnExecutar);
             this.groupBox1.Controls.Add(this.txtUrl);
-            this.groupBox1.Controls.Add(this.cmbProtocolo);
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(267, 12);
@@ -90,6 +86,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados da Conexão";
+            // 
+            // rtbBody
+            // 
+            this.rtbBody.Location = new System.Drawing.Point(647, 106);
+            this.rtbBody.Name = "rtbBody";
+            this.rtbBody.Size = new System.Drawing.Size(197, 73);
+            this.rtbBody.TabIndex = 22;
+            this.rtbBody.Text = "";
+            // 
+            // lblBody
+            // 
+            this.lblBody.AutoSize = true;
+            this.lblBody.Location = new System.Drawing.Point(644, 88);
+            this.lblBody.Name = "lblBody";
+            this.lblBody.Size = new System.Drawing.Size(31, 13);
+            this.lblBody.TabIndex = 21;
+            this.lblBody.Text = "Body";
             // 
             // rdbSemAutenticacao
             // 
@@ -101,6 +114,7 @@
             this.rdbSemAutenticacao.TabStop = true;
             this.rdbSemAutenticacao.Text = "Sem Autenticação";
             this.rdbSemAutenticacao.UseVisualStyleBackColor = true;
+            this.rdbSemAutenticacao.CheckedChanged += new System.EventHandler(this.rdbSemAutenticacao_CheckedChanged);
             // 
             // txtAgent
             // 
@@ -140,6 +154,7 @@
             this.txtHeaderValueB.Name = "txtHeaderValueB";
             this.txtHeaderValueB.Size = new System.Drawing.Size(172, 20);
             this.txtHeaderValueB.TabIndex = 8;
+            this.txtHeaderValueB.UseSystemPasswordChar = true;
             // 
             // txtHeaderKeyB
             // 
@@ -154,6 +169,7 @@
             this.txtHeaderValueA.Name = "txtHeaderValueA";
             this.txtHeaderValueA.Size = new System.Drawing.Size(172, 20);
             this.txtHeaderValueA.TabIndex = 6;
+            this.txtHeaderValueA.UseSystemPasswordChar = true;
             // 
             // txtHeaderKeyA
             // 
@@ -235,20 +251,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(121, 44);
+            this.label3.Location = new System.Drawing.Point(6, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Url Conexão";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Protocolo";
             // 
             // btnExecutar
             // 
@@ -262,21 +269,10 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(124, 60);
+            this.txtUrl.Location = new System.Drawing.Point(9, 60);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(558, 20);
+            this.txtUrl.Size = new System.Drawing.Size(673, 20);
             this.txtUrl.TabIndex = 3;
-            // 
-            // cmbProtocolo
-            // 
-            this.cmbProtocolo.FormattingEnabled = true;
-            this.cmbProtocolo.Items.AddRange(new object[] {
-            "HTTP://",
-            "HTTPS://"});
-            this.cmbProtocolo.Location = new System.Drawing.Point(9, 59);
-            this.cmbProtocolo.Name = "cmbProtocolo";
-            this.cmbProtocolo.Size = new System.Drawing.Size(109, 21);
-            this.cmbProtocolo.TabIndex = 2;
             // 
             // txtNome
             // 
@@ -315,23 +311,6 @@
             this.rtbResultado.TabIndex = 13;
             this.rtbResultado.Text = "";
             // 
-            // lblBody
-            // 
-            this.lblBody.AutoSize = true;
-            this.lblBody.Location = new System.Drawing.Point(644, 88);
-            this.lblBody.Name = "lblBody";
-            this.lblBody.Size = new System.Drawing.Size(31, 13);
-            this.lblBody.TabIndex = 21;
-            this.lblBody.Text = "Body";
-            // 
-            // rtbBody
-            // 
-            this.rtbBody.Location = new System.Drawing.Point(647, 106);
-            this.rtbBody.Name = "rtbBody";
-            this.rtbBody.Size = new System.Drawing.Size(197, 73);
-            this.rtbBody.TabIndex = 22;
-            this.rtbBody.Text = "";
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,10 +334,8 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUrl;
-        private System.Windows.Forms.ComboBox cmbProtocolo;
         private System.Windows.Forms.Button btnExecutar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbMetodo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSalvar;

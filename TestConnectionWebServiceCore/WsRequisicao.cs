@@ -23,31 +23,18 @@ namespace TestConnectionWebServiceCore
             this.Proxy = null;
         }
 
-        public string ExecutarRequisicao(string userAgent, string contentType, Dictionary<string, string> parametros, 
-            MetodosWebService method, string body, string headerUsuario = null, string headerSenha = null, bool autenticacao = false)
+        public string ExecutarRequisicao(string userAgent, string contentType, MetodosWebService method, string body, Dictionary<string,string> dadosAutenticacao, bool isBasic, bool isHeader)
         {
             WsConexao ws = new WsConexao(urlWebService, usuarioWebService, senhaWebService);
             WebHeaderCollection header = null;
 
-            if (!string.IsNullOrEmpty(headerUsuario) && !string.IsNullOrEmpty(headerSenha))
-                header = AutenticarHeader(headerUsuario, usuarioWebService, headerSenha, senhaWebService);
+            if (isHeader && dadosAutenticacao.Keys.Count > 0)
+                header = MontarHeader(dadosAutenticacao["keyUser1"], dadosAutenticacao["valuePass1"], dadosAutenticacao["keyUser2"], dadosAutenticacao["valuePass2"]);
 
-            urlWebService += "?";
-
-            if (parametros != null && parametros.Keys != null)
-            {
-                foreach (var param in parametros)
-                {
-                    urlWebService += param.Key + "=" + param.Value + "&";
-                }
-            }
-
-            urlWebService = urlWebService.Substring(0, urlWebService.Length - 1);
-
-            return ws.Executar(userAgent, contentType, method, header, body, autenticacao);
+            return ws.Executar(userAgent, contentType, method, header, body, isBasic, isHeader);
         }
 
-        private WebHeaderCollection AutenticarHeader(string headerUsuario, string usuario, string headerSenha, string senha)
+        private WebHeaderCollection MontarHeader(string headerUsuario, string usuario, string headerSenha, string senha)
         {
             WebHeaderCollection header = new WebHeaderCollection();
             header.Add(headerUsuario, usuario);

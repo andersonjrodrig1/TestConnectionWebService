@@ -16,6 +16,11 @@ namespace TestConnectionWebService
     {
         static void Main(string[] args)
         {
+            LerArquivoXML();
+        }
+
+        private static void ConsumirWebService()
+        {
             string url = "http://jsonplaceholder.typicode.com/posts";
             string contentType = "application/json";
             string userAgent = "RequisicaoWebDemo";
@@ -33,7 +38,7 @@ namespace TestConnectionWebService
 
                 foreach (var pag in paginas)
                 {
-                    strPaginas += "---------------------------------------------------------------------------------------------------\n";
+                    strPaginas += "----------------------------------------------------\n";
                     strPaginas += pag.id + "\n";
                     strPaginas += pag.userId + "\n";
                     strPaginas += pag.title + "\n";
@@ -43,10 +48,21 @@ namespace TestConnectionWebService
             catch (Exception ex)
             {
                 strPaginas = ex.ToString();
-            }            
+            }
 
             Console.Write(strPaginas);
             Console.ReadKey();
-        }        
+        }
+
+        private static void LerArquivoXML()
+        {
+            DadosConfig dados = new DadosConfig();
+            Util.GetDadosConfiguracao<DadosConfig>(ref dados);
+
+            Console.Write(dados.Ativo + "\n");
+            Console.Write(dados.Caminho + "\n");
+            Console.Write(dados.Nome_Arquivo + "\n");
+            Console.ReadKey();
+        }
     }
 }

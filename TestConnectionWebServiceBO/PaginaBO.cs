@@ -13,14 +13,14 @@ namespace TestConnectionWebServiceBO
         private string urlWebService { get; set; }
         private string usuarioWebService { get; set; }
         private string senhaWebService { get; set; }
-        private WebProxy Proxy { get; set; }
+        private WebProxy proxy { get; set; }
 
         public PaginaBO(string urlWebService, string usuarioWebService, string senhaWebService)
         {
             this.urlWebService = urlWebService;
             this.usuarioWebService = usuarioWebService;
             this.senhaWebService = senhaWebService;
-            this.Proxy = null;
+            this.proxy = null;
         }
 
         public string BuscarPagina(string userAgent, string contentType, string body)
@@ -33,7 +33,41 @@ namespace TestConnectionWebServiceBO
             return resultado;
         }
 
-        public List<Pagina> ConverterPaginas(JObject objeto)
+        public string BuscarDadosWebService(string userAgent, string contentType, string body, int metodo, string headerkey, string headerValue, bool isHeader, bool isBasic)
+        {
+            Dictionary<string, string> dadosAutentica = null;
+            PaginaDAO paginaDAO = new PaginaDAO(urlWebService, usuarioWebService, senhaWebService);
+
+            if (isHeader)
+            {
+                dadosAutentica = new Dictionary<string, string>();
+                dadosAutentica.Add(usuarioWebService, senhaWebService);
+                dadosAutentica.Add(headerkey, headerValue);
+            }
+
+            if (!string.IsNullOrEmpty(body))
+            {
+                //TODO: montagem do body em formato json
+            }
+
+            MetodosWebService method = this.BuscarMetodoWebService(metodo);
+
+            return paginaDAO.BuscarDadosWebService(userAgent, contentType, body, method, dadosAutentica, isBasic, isHeader);
+        }
+
+        private MetodosWebService BuscarMetodoWebService(int valor)
+        {
+            if(valor == 1)
+                return MetodosWebService.POST;
+            else if(valor == 2)
+                return MetodosWebService.PUT;
+            else if(valor == 3)
+                return MetodosWebService.DELETE;
+            else
+                return MetodosWebService.GET;
+        }
+
+        private List<Pagina> ConverterPaginas(JObject objeto)
         {
             var paginas = new List<Pagina>();
 

@@ -24,7 +24,7 @@ namespace TestConnectionWebServiceCore
             this.proxy = null;
         }
 
-        public string Executar(string userAgent, string contentType, MetodosWebService method, WebHeaderCollection header, string body, bool autenticacao = false)
+        public string Executar(string userAgent, string contentType, MetodosWebService method, WebHeaderCollection header, string body, bool isBasic, bool isHeader)
         {
             string result = "";
 
@@ -39,11 +39,11 @@ namespace TestConnectionWebServiceCore
                 if(!string.IsNullOrEmpty(userAgent))
                     httpResquest.UserAgent = userAgent;
 
-                if (autenticacao)
+                if (isBasic)
                 {
                     SetAutenticationBasic(httpResquest, usuarioWebService, senhaWebService);
                 }
-                else if (header != null)
+                else if (isHeader && header != null)
                 {
                     httpResquest.Headers = header;
                 }
@@ -67,13 +67,15 @@ namespace TestConnectionWebServiceCore
                     request.Close();
                 }
 
-                var response = httpResquest.GetResponse();
-                var streamDados = response.GetResponseStream();
-                var reader = new StreamReader(streamDados);
+                using (var response = httpResquest.GetResponse())
+                {
+                    var streamDados = response.GetResponseStream();
+                    var reader = new StreamReader(streamDados);
 
-                result = reader.ReadToEnd();
+                    result = reader.ReadToEnd();
+                }
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
                 result = ex.ToString();
             }
@@ -83,7 +85,7 @@ namespace TestConnectionWebServiceCore
 
         private static void SetAutenticationBasic(HttpWebRequest httpRequest, string usuario, string senha)
         {
-
+            httpRequest.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.Default.GetBytes(usuario + ":" + senha));
         }
     }
 }
