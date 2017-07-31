@@ -17,3 +17,5 @@ D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bi
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceCore.pdb
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.exe
 D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\obj\Debug\TestConnectionWebServiceClient.pdb
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceUtil.dll
+D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceClient\bin\Debug\TestConnectionWebServiceUtil.pdb
