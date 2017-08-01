@@ -8,8 +8,9 @@ namespace TestConnectionWebServiceEntity
 {
     public class DadosConfig
     {
-        public string Ativo { get; set; }
-        public string Caminho { get; set; }
-        public string Nome_Arquivo { get; set; }
+        public string Path_Arquivo_Dados { get; set; }
+        public string Arquivo_Dados { get; set; }
+        public string Path_Arquivo_Registro { get; set; }
+        public string Arquivo_Registro { get; set; }
     }
 }

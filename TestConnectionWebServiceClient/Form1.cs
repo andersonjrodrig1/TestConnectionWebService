@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestConnectionWebServiceBO;
+using TestConnectionWebServiceEntity;
 
 namespace TestConnectionWebServiceClient
 {
@@ -68,11 +69,17 @@ namespace TestConnectionWebServiceClient
                 string valueA = txtHeaderValueA.Text;
                 string keyB = txtHeaderKeyB.Text;
                 string valueB = txtHeaderValueB.Text;
+                string metodo = cmbMetodo.Text;
 
-                int metodo = cmbMetodo.SelectedIndex;
-
+                bool isSemAutent = rdbSemAutenticacao.Checked ? true : false;
+                bool isComAutent = rdbUserPass.Checked ? true : false;
                 bool isBasic = rdbBasic.Checked ? true : false;
                 bool isHeader = rdbHeader.Checked ? true : false;
+
+                Arquivo arquivo = new ArquivoBO().GerarArquivo(nmMetodo, urlWebService, metodo, isSemAutent, isComAutent, isBasic, isHeader, keyA, valueA, keyB, valueB, contentType, userAgent, body);
+                string retorno = new ArquivoBO().GravarArquivo(arquivo);
+
+                MessageBox.Show(retorno, "Atenção!");
             }
         }
 

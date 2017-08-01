@@ -20,7 +20,7 @@ namespace TestConnectionWebServiceUtil
             return result;
         }
 
-        public static void GetDadosConfiguracao<T>(ref T dados)
+        public static T GetDadosConfiguracao<T>(T dados)
         {
             XmlDocument document = new XmlDocument();
             PropertyInfo[] propertyInfo = dados.GetType().GetProperties();
@@ -33,6 +33,8 @@ namespace TestConnectionWebServiceUtil
                 string valor = xml.SelectSingleNode(info.Name).InnerText;
                 info.SetValue(dados, valor, null);
             }
+
+            return dados;
         }
     }
 }

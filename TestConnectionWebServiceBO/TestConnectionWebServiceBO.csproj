@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArquivoBO.cs" />
     <Compile Include="DadosConfigBO.cs" />
     <Compile Include="PaginaBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -57,11 +57,12 @@ namespace TestConnectionWebService
         private static void LerArquivoXML()
         {
             DadosConfig dados = new DadosConfig();
-            Util.GetDadosConfiguracao<DadosConfig>(ref dados);
+            dados = Util.GetDadosConfiguracao<DadosConfig>(dados);
 
-            Console.Write(dados.Ativo + "\n");
-            Console.Write(dados.Caminho + "\n");
-            Console.Write(dados.Nome_Arquivo + "\n");
+            Console.Write(dados.Path_Arquivo_Dados + "\n");
+            Console.Write(dados.Arquivo_Dados + "\n");
+            Console.Write(dados.Path_Arquivo_Registro + "\n");
+            Console.Write(dados.Arquivo_Registro + "\n");
             Console.ReadKey();
         }
     }

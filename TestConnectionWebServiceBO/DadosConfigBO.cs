@@ -12,12 +12,10 @@ namespace TestConnectionWebServiceBO
 {
     public class DadosConfigBO
     {
-        private static string arquivoXml = @"D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceWeb\Models\Config\DadosConfig.config";
-
-        public static DadosConfig BuscarDadosConfiguracao()
+        public DadosConfig BuscarDadosConfiguracao()
         {
             DadosConfig dados = new DadosConfig();
-            Util.GetDadosConfiguracao<DadosConfig>(ref dados);
+            dados = Util.GetDadosConfiguracao<DadosConfig>(dados);
 
             return dados;
         }

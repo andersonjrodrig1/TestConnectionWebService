@@ -83,6 +83,10 @@
       <Project>{929fd034-f0c3-417f-91e4-f4efd541dc23}</Project>
       <Name>TestConnectionWebServiceBO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestConnectionWebServiceEntity\TestConnectionWebServiceEntity.csproj">
+      <Project>{9d2dd514-6a5d-43cc-b360-4c534861e8c0}</Project>
+      <Name>TestConnectionWebServiceEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

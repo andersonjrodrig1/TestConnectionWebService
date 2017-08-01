@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arquivo.cs" />
     <Compile Include="DadosConfig.cs" />
     <Compile Include="Enumeradores.cs" />
     <Compile Include="Pagina.cs" />
