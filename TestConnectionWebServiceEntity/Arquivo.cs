@@ -17,8 +17,8 @@ namespace TestConnectionWebServiceEntity
         public bool Autenticacao_Basic { get; set; }
         public bool Autenticacao_Header { get; set; }
         public Dictionary<string,string> Dados_Autenticacao { get; set; }
-        public string Content { get; set; }
-        public string Agent { get; set; }
+        public string Content_Type { get; set; }
+        public string User_Agent { get; set; }
         public string Body { get; set; }
     }
 }

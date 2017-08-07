@@ -14,6 +14,8 @@ namespace TestConnectionWebServiceClient
 {
     public partial class frmPrincipal : Form
     {
+        private List<string> nomesMetodosConsulta = null;
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -26,6 +28,9 @@ namespace TestConnectionWebServiceClient
             rtbBody.Visible = false;
             txtHeaderKeyA.Enabled = false;
             txtHeaderValueA.Enabled = false;
+
+            nomesMetodosConsulta = new ArquivoBO().BuscarNomeArquivosGravados();
+            PreencherTelaMetoodosWebService(nomesMetodosConsulta);
         }
 
         private void btnExecutar_Click(object sender, EventArgs e)
@@ -201,6 +206,18 @@ namespace TestConnectionWebServiceClient
             }
 
             txtContent.Text = "application/json";
+        }
+
+        private void PreencherTelaMetoodosWebService(List<string> nomeMetodosWebService)
+        {
+            dgvMetodos.Columns.Add("coluna1", "Métodos WebService");
+            dgvMetodos.Columns["coluna1"].ReadOnly = true;
+            dgvMetodos.Columns["coluna1"].Width = 197;
+
+            foreach (var metodo in nomeMetodosWebService)
+            {
+                dgvMetodos.Rows.Add(metodo);
+            }
         }
     }
 }

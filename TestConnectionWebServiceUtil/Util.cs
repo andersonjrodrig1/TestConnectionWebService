@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -35,6 +36,70 @@ namespace TestConnectionWebServiceUtil
             }
 
             return dados;
+        }
+
+        public static FileInfo[] GetArquivosGravados(string diretorioArquivo)
+        {
+            DirectoryInfo diretorio = new DirectoryInfo(diretorioArquivo);
+            FileInfo[] file = diretorio.GetFiles();
+
+            return file;
+        }
+
+        public static void CriarDiretorio(string diretorioArquivo)
+        {
+            if (!string.IsNullOrEmpty(diretorioArquivo))
+            {
+                if (!ExisteDiretorio(diretorioArquivo))
+                    Directory.CreateDirectory(diretorioArquivo);
+            }
+        }
+
+        public static void CriarArquivo(string diretorioArquivo, string nomeArquivo)
+        {
+            if (!string.IsNullOrEmpty(diretorioArquivo) && !string.IsNullOrEmpty(nomeArquivo))
+            {
+                string arquivo = string.Format("{0}\\{1}.xml", diretorioArquivo, nomeArquivo);
+
+                if (!string.IsNullOrEmpty(arquivo) && arquivo != ".xml")
+                {
+                    File.Create(arquivo).Dispose();
+                }
+            }
+        }
+
+        public static bool ExisteArquivoDiretorio(string diretorioArquivo)
+        {
+            if (ExisteDiretorio(diretorioArquivo))
+            {
+                FileInfo[] file = GetArquivosGravados(diretorioArquivo);
+
+                if (file != null && file.Count() > 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool ExisteDiretorio(string diretorioArquivo)
+        {
+            if (!Directory.Exists(diretorioArquivo))
+                return false;
+
+            return true;
+        }
+
+        public static bool ExisteArquivo(string diretorioArquivo, string nomeArquivo)
+        {
+            string arquivo = string.Format("{0}\\{1}.xml", diretorioArquivo, nomeArquivo);
+
+            if (!string.IsNullOrEmpty(arquivo) && arquivo != ".xml")
+            {
+                if (!File.Exists(arquivo))
+                    return false;
+            }
+
+            return true;
         }
     }
 }

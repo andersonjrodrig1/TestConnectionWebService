@@ -11,6 +11,5 @@ namespace TestConnectionWebServiceEntity
         public string Path_Arquivo_Dados { get; set; }
         public string Arquivo_Dados { get; set; }
         public string Path_Arquivo_Registro { get; set; }
-        public string Arquivo_Registro { get; set; }
     }
 }

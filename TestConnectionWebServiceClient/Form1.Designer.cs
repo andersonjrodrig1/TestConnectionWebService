@@ -53,7 +53,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rtbResultado = new System.Windows.Forms.RichTextBox();
+            this.dgvMetodos = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMetodos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -292,6 +295,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dgvMetodos);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(249, 483);
@@ -311,6 +315,14 @@
             this.rtbResultado.TabIndex = 13;
             this.rtbResultado.Text = "";
             // 
+            // dgvMetodos
+            // 
+            this.dgvMetodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMetodos.Location = new System.Drawing.Point(3, 19);
+            this.dgvMetodos.Name = "dgvMetodos";
+            this.dgvMetodos.Size = new System.Drawing.Size(240, 458);
+            this.dgvMetodos.TabIndex = 0;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +335,8 @@
             this.Text = "Teste de Conexão de WebService";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMetodos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -354,6 +368,7 @@
         private System.Windows.Forms.RadioButton rdbSemAutenticacao;
         private System.Windows.Forms.RichTextBox rtbBody;
         private System.Windows.Forms.Label lblBody;
+        private System.Windows.Forms.DataGridView dgvMetodos;
     }
 }
 

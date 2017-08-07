@@ -62,7 +62,6 @@ namespace TestConnectionWebService
             Console.Write(dados.Path_Arquivo_Dados + "\n");
             Console.Write(dados.Arquivo_Dados + "\n");
             Console.Write(dados.Path_Arquivo_Registro + "\n");
-            Console.Write(dados.Arquivo_Registro + "\n");
             Console.ReadKey();
         }
     }

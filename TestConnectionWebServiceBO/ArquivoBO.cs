@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using TestConnectionWebServiceDAO;
 using TestConnectionWebServiceEntity;
+using TestConnectionWebServiceUtil;
 
 namespace TestConnectionWebServiceBO
 {
@@ -14,21 +16,55 @@ namespace TestConnectionWebServiceBO
     {
         public string GravarArquivo(Arquivo arquivo)
         {
-            string mensagem = "";
-            DadosConfig dados = new DadosConfig();
-
-            dados = new DadosConfigBO().BuscarDadosConfiguracao();
-
-            if(dados == null)
+            try
             {
-                mensagem = "Falha ao salvar os dados!";
-                return mensagem;
+                DadosConfig dados = new DadosConfigBO().BuscarDadosConfiguracao();
+
+                if (arquivo == null)
+                {
+                    return "Falha ao salvar os dados. Arquivo inconsistente.";
+                }
+
+                if (dados == null)
+                {
+                    return "Falha ao salvar os dados! Configuração inexistente.";
+                }
+
+                if (!Util.ExisteDiretorio(dados.Path_Arquivo_Registro))
+                    Util.CriarDiretorio(dados.Path_Arquivo_Registro);
+
+                if (!Util.ExisteArquivo(dados.Path_Arquivo_Registro, arquivo.Nome))
+                    Util.CriarArquivo(dados.Path_Arquivo_Registro, arquivo.Nome);
+
+                return new ArquivoDAO().SalvarDadosArquivo(arquivo, dados);
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public List<string> BuscarNomeArquivosGravados()
+        {
+            List<string> nomesArquivo = null;
+            DadosConfig dados = new DadosConfigBO().BuscarDadosConfiguracao();
+
+            if (dados == null)
+                return nomesArquivo;
+
+            if (Util.ExisteDiretorio(dados.Path_Arquivo_Registro) && Util.ExisteArquivoDiretorio(dados.Path_Arquivo_Registro))
+            {
+                nomesArquivo = new List<string>();
+                FileInfo[] info = Util.GetArquivosGravados(dados.Path_Arquivo_Registro);
+
+                foreach(var inf in info)
+                {
+                    string nomeArquivo = inf.Name.Replace(inf.Extension, "");
+                    nomesArquivo.Add(nomeArquivo);
+                }
             }
 
-            if (!ExisteArquivo(dados.Path_Arquivo_Registro, dados.Arquivo_Registro))
-                CriarArquivo(dados.Path_Arquivo_Registro, dados.Arquivo_Registro);
-
-            return SalvarDadosArquivo(arquivo, dados);
+            return nomesArquivo;
         }
 
         public Arquivo GerarArquivo(string nome, string url, string requisicao, bool semAutent, bool autenticacao, 
@@ -52,71 +88,11 @@ namespace TestConnectionWebServiceBO
                 arquivo.Dados_Autenticacao.Add(keyB, valueB);
             }
 
-            arquivo.Content = content;
-            arquivo.Agent = agent;
+            arquivo.Content_Type = content;
+            arquivo.User_Agent = agent;
             arquivo.Body = body;
 
             return arquivo;
-        }
-
-        private string SalvarDadosArquivo(Arquivo arquivo, DadosConfig dados)
-        {
-            string retorno = "";
-            string arquivoDados = string.Format("{0}\\{1}", dados.Path_Arquivo_Registro, dados.Arquivo_Registro);
-
-            try
-            {
-                XmlTextWriter writer = new XmlTextWriter(arquivoDados, System.Text.Encoding.UTF8);
-                writer.WriteStartDocument(true);
-                writer.Formatting = Formatting.Indented;
-                writer.Indentation = 2;
-                writer.WriteStartElement("WebServices");
-
-                writer.WriteStartElement("Nome");
-                writer.WriteString(arquivo.Nome);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("UrlWebService");
-                writer.WriteString(arquivo.Url_Conexao);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("Requisicao");
-                writer.WriteString(arquivo.Tipo_Requisicao);
-                writer.WriteEndElement();
-
-                //TODO: Terminar preenchimento do arquivo para escrita
-
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-
-                writer.Close();
-
-                retorno = "Salvo com sucesso!";
-            }
-            catch (FileLoadException ex)
-            {
-                retorno = ex.ToString();
-            }
-
-            return retorno;
-        }
-
-        private void CriarArquivo(string diretorioArquivo, string nomeArquivo)
-        {
-            string arquivo = string.Format("{0}\\{1}", diretorioArquivo, nomeArquivo);
-
-            File.Create(arquivo).Dispose();
-        }
-
-        private bool ExisteArquivo(string diretorioArquivo, string nomeArquivo)
-        {
-            bool existe = false;
-            string arquivo = string.Format("{0}\\{1}", diretorioArquivo, nomeArquivo);
-
-            if (File.Exists(arquivo))
-                existe = true;
-
-            return existe;
         }
     }
 }
