@@ -9,6 +9,6 @@
 *.manifest
 *.cache
 *.txt
-/TestConnectionWebServiceWeb/bin/roslyn/*.targets
-/TestConnectionWebServiceWeb/bin/roslyn/*.config
-/TestConnectionWebServiceWeb/bin/roslyn/*.rsp
+*.targets
+*.config
+*.rsp
