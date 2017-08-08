@@ -1,6 +1,0 @@
-D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceUnitTest\bin\Debug\TestConnectionWebServiceUnitTest.dll
-D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceUnitTest\bin\Debug\TestConnectionWebServiceUnitTest.pdb
-D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceUnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceUnitTest\obj\Debug\TestConnectionWebServiceUnitTest.csprojResolveAssemblyReference.cache
-D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceUnitTest\obj\Debug\TestConnectionWebServiceUnitTest.dll
-D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceUnitTest\obj\Debug\TestConnectionWebServiceUnitTest.pdb

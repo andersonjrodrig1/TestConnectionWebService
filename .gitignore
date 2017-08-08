@@ -5,3 +5,10 @@
 *.xml
 *.pdb
 *.cache
+*.config
+*.manifest
+*.cache
+*.txt
+/TestConnectionWebServiceWeb/bin/roslyn/*.targets
+/TestConnectionWebServiceWeb/bin/roslyn/*.config
+/TestConnectionWebServiceWeb/bin/roslyn/*.rsp
