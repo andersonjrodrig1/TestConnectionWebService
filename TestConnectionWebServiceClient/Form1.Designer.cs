@@ -52,8 +52,8 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rtbResultado = new System.Windows.Forms.RichTextBox();
             this.dgvMetodos = new System.Windows.Forms.DataGridView();
+            this.rtbResultado = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetodos)).BeginInit();
@@ -303,6 +303,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Métodos";
             // 
+            // dgvMetodos
+            // 
+            this.dgvMetodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMetodos.Location = new System.Drawing.Point(3, 19);
+            this.dgvMetodos.Name = "dgvMetodos";
+            this.dgvMetodos.Size = new System.Drawing.Size(240, 458);
+            this.dgvMetodos.TabIndex = 0;
+            this.dgvMetodos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMetodos_CellClick);
+            // 
             // rtbResultado
             // 
             this.rtbResultado.BackColor = System.Drawing.SystemColors.Window;
@@ -314,14 +323,6 @@
             this.rtbResultado.Size = new System.Drawing.Size(850, 291);
             this.rtbResultado.TabIndex = 13;
             this.rtbResultado.Text = "";
-            // 
-            // dgvMetodos
-            // 
-            this.dgvMetodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMetodos.Location = new System.Drawing.Point(3, 19);
-            this.dgvMetodos.Name = "dgvMetodos";
-            this.dgvMetodos.Size = new System.Drawing.Size(240, 458);
-            this.dgvMetodos.TabIndex = 0;
             // 
             // frmPrincipal
             // 

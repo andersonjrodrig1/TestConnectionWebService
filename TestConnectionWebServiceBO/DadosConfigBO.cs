@@ -15,7 +15,7 @@ namespace TestConnectionWebServiceBO
         public DadosConfig BuscarDadosConfiguracao()
         {
             DadosConfig dados = new DadosConfig();
-            dados = Util.GetDadosConfiguracao<DadosConfig>(dados);
+            dados = Util.GetDadosArquivo<DadosConfig>(dados);
 
             return dados;
         }

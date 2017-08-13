@@ -67,6 +67,26 @@ namespace TestConnectionWebServiceBO
             return nomesArquivo;
         }
 
+        public Arquivo BuscarArquivoPorNome(string nomeArquivo)
+        {
+            Arquivo arquivo = null;
+            DadosConfig dados = new DadosConfigBO().BuscarDadosConfiguracao();
+
+            if (string.IsNullOrEmpty(nomeArquivo) || dados == null)
+                throw new Exception();
+
+            nomeArquivo = string.Concat(nomeArquivo, ".xml");
+            
+            if(Util.ExisteArquivo(dados.Path_Arquivo_Registro, nomeArquivo))
+            {
+                arquivo = new Arquivo();
+                string pathFile = string.Concat(dados.Path_Arquivo_Registro, nomeArquivo);
+                arquivo = Util.GetDadosArquivo<Arquivo>(arquivo, pathFile);
+            }
+
+            return arquivo;
+        }
+
         public Arquivo GerarArquivo(string nome, string url, string requisicao, bool semAutent, bool autenticacao, 
             bool basic, bool header, string keyA, string valueA, string keyB, string valueB, string content, string agent, string body)
         {
@@ -78,16 +98,10 @@ namespace TestConnectionWebServiceBO
             arquivo.Com_Autenticacao = autenticacao;
             arquivo.Autenticacao_Basic = basic;
             arquivo.Autenticacao_Header = header;
-            arquivo.Dados_Autenticacao = new Dictionary<string, string>();
-
-            if (arquivo.Com_Autenticacao || arquivo.Autenticacao_Basic)
-                arquivo.Dados_Autenticacao.Add(keyA, valueA);
-            else if(arquivo.Autenticacao_Header)
-            {
-                arquivo.Dados_Autenticacao.Add(keyA, valueA);
-                arquivo.Dados_Autenticacao.Add(keyB, valueB);
-            }
-
+            arquivo.User_0 = keyA;
+            arquivo.Password_0 = valueA;
+            arquivo.User_1 = keyB;
+            arquivo.Password_1 = valueB;
             arquivo.Content_Type = content;
             arquivo.User_Agent = agent;
             arquivo.Body = body;

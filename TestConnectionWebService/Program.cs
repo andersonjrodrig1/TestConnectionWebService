@@ -57,7 +57,7 @@ namespace TestConnectionWebService
         private static void LerArquivoXML()
         {
             DadosConfig dados = new DadosConfig();
-            dados = Util.GetDadosConfiguracao<DadosConfig>(dados);
+            dados = Util.GetDadosArquivo<DadosConfig>(dados);
 
             Console.Write(dados.Path_Arquivo_Dados + "\n");
             Console.Write(dados.Arquivo_Dados + "\n");

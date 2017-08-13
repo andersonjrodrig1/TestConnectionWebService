@@ -21,18 +21,38 @@ namespace TestConnectionWebServiceUtil
             return result;
         }
 
-        public static T GetDadosConfiguracao<T>(T dados)
+        public static T GetDadosArquivo<T>(T dados, string arquivo = null)
         {
             XmlDocument document = new XmlDocument();
             PropertyInfo[] propertyInfo = dados.GetType().GetProperties();
 
-            document.Load(arquivoXml);
+            if (string.IsNullOrEmpty(arquivo))
+            {
+                document.Load(arquivoXml);
+            }
+            else
+            {
+                document.Load(arquivo);
+            }
+
             XmlNode xml = document.SelectSingleNode(document.DocumentElement.Name);
 
             foreach (var info in propertyInfo)
             {
                 string valor = xml.SelectSingleNode(info.Name).InnerText;
-                info.SetValue(dados, valor, null);
+
+                if (info.PropertyType == typeof(bool))
+                {
+                    info.SetValue(dados, Convert.ToBoolean(valor), null);
+                }
+                else if (info.PropertyType == typeof(int))
+                {
+                    info.SetValue(dados, Convert.ToInt32(valor), null);
+                }
+                else
+                {
+                    info.SetValue(dados, valor, null);
+                }
             }
 
             return dados;
@@ -59,9 +79,12 @@ namespace TestConnectionWebServiceUtil
         {
             if (!string.IsNullOrEmpty(diretorioArquivo) && !string.IsNullOrEmpty(nomeArquivo))
             {
-                string arquivo = string.Format("{0}\\{1}.xml", diretorioArquivo, nomeArquivo);
+                string arquivo = "";
 
-                if (!string.IsNullOrEmpty(arquivo) && arquivo != ".xml")
+                nomeArquivo = string.Concat(nomeArquivo, ".xml");
+                arquivo = string.Concat(diretorioArquivo, nomeArquivo);
+
+                if (!string.IsNullOrEmpty(arquivo))
                 {
                     File.Create(arquivo).Dispose();
                 }
@@ -91,9 +114,9 @@ namespace TestConnectionWebServiceUtil
 
         public static bool ExisteArquivo(string diretorioArquivo, string nomeArquivo)
         {
-            string arquivo = string.Format("{0}\\{1}.xml", diretorioArquivo, nomeArquivo);
+            string arquivo = string.Concat(diretorioArquivo, nomeArquivo);
 
-            if (!string.IsNullOrEmpty(arquivo) && arquivo != ".xml")
+            if (!string.IsNullOrEmpty(arquivo))
             {
                 if (!File.Exists(arquivo))
                     return false;

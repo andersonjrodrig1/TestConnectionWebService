@@ -50,8 +50,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestArquivo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestConnectionWebServiceBO\TestConnectionWebServiceBO.csproj">
+      <Project>{929fd034-f0c3-417f-91e4-f4efd541dc23}</Project>
+      <Name>TestConnectionWebServiceBO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestConnectionWebServiceEntity\TestConnectionWebServiceEntity.csproj">
+      <Project>{9d2dd514-6a5d-43cc-b360-4c534861e8c0}</Project>
+      <Name>TestConnectionWebServiceEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

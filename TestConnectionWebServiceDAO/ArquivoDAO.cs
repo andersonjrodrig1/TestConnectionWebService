@@ -26,10 +26,6 @@ namespace TestConnectionWebServiceDAO
                 writer.Indentation = 4;                
                 writer.WriteStartElement("WebServices");
 
-                writer.WriteStartElement("Codigo");
-                writer.WriteString(arquivo.Codigo.ToString());
-                writer.WriteEndElement();
-
                 writer.WriteStartElement("Nome");
                 writer.WriteString(arquivo.Nome);
                 writer.WriteEndElement();
@@ -54,32 +50,31 @@ namespace TestConnectionWebServiceDAO
                 writer.WriteString(arquivo.Autenticacao_Basic.ToString());
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("Autenticao_Header");
+                writer.WriteStartElement("Autenticacao_Header");
                 writer.WriteString(arquivo.Autenticacao_Header.ToString());
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("Dados_Autenticacao");
+                writer.WriteStartElement("User_0");
+                writer.WriteString(arquivo.User_0);
+                writer.WriteEndElement();
 
-                if(arquivo.Dados_Autenticacao != null && arquivo.Dados_Autenticacao.Count > 0)
-                {
-                    foreach (var dado in arquivo.Dados_Autenticacao) {
-                        writer.WriteStartElement("Usuario");
-                        writer.WriteString(dado.Key);
-                        writer.WriteEndElement();
+                writer.WriteStartElement("Password_0");
+                writer.WriteString(arquivo.Password_0);
+                writer.WriteEndElement();
 
-                        writer.WriteStartElement("Senha");
-                        writer.WriteString(dado.Value);
-                        writer.WriteEndElement();
-                    }
-                }
+                writer.WriteStartElement("User_1");
+                writer.WriteString(arquivo.User_1);
+                writer.WriteEndElement();
 
+                writer.WriteStartElement("Password_1");
+                writer.WriteString(arquivo.Password_1);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Content_Type");
                 writer.WriteString(arquivo.Content_Type);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("User_Agente");
+                writer.WriteStartElement("User_Agent");
                 writer.WriteString(arquivo.User_Agent);
                 writer.WriteEndElement();
 

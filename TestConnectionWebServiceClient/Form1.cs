@@ -84,6 +84,9 @@ namespace TestConnectionWebServiceClient
                 Arquivo arquivo = new ArquivoBO().GerarArquivo(nmMetodo, urlWebService, metodo, isSemAutent, isComAutent, isBasic, isHeader, keyA, valueA, keyB, valueB, contentType, userAgent, body);
                 string retorno = new ArquivoBO().GravarArquivo(arquivo);
 
+                nomesMetodosConsulta = new ArquivoBO().BuscarNomeArquivosGravados();
+                PreencherTelaMetoodosWebService(nomesMetodosConsulta);
+
                 MessageBox.Show(retorno, "Atenção!");
             }
         }
@@ -214,9 +217,23 @@ namespace TestConnectionWebServiceClient
             dgvMetodos.Columns["coluna1"].ReadOnly = true;
             dgvMetodos.Columns["coluna1"].Width = 197;
 
-            foreach (var metodo in nomeMetodosWebService)
+            if (nomeMetodosWebService != null && nomeMetodosWebService.Count > 0)
             {
-                dgvMetodos.Rows.Add(metodo);
+                foreach (var nome in nomeMetodosWebService)
+                {
+                    string[] array = new string[1];
+                    array[0] = nome;
+
+                    dgvMetodos.Rows.Add(array);
+                }
+            }
+        }
+
+        private void dgvMetodos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvMetodos.Rows[e.RowIndex].Cells["coluna1"].Value != null)
+            {
+                MessageBox.Show(dgvMetodos.Rows[e.RowIndex].Cells["coluna1"].Value.ToString());
             }
         }
     }
