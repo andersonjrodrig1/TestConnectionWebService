@@ -35,10 +35,15 @@ namespace TestConnectionWebServiceClient
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
+            this.BuscarDadosWebService();
+        }
+
+        private void BuscarDadosWebService()
+        {
             if (ValidaCamposObrigatorios())
             {
                 string urlWebService = txtUrl.Text;
-                string contentType = txtContent.Text ;
+                string contentType = txtContent.Text;
                 string userAgent = txtAgent.Text;
                 string body = rtbBody.Text;
                 string keyA = txtHeaderKeyA.Text;
@@ -84,6 +89,7 @@ namespace TestConnectionWebServiceClient
                 Arquivo arquivo = new ArquivoBO().GerarArquivo(nmMetodo, urlWebService, metodo, isSemAutent, isComAutent, isBasic, isHeader, keyA, valueA, keyB, valueB, contentType, userAgent, body);
                 string retorno = new ArquivoBO().GravarArquivo(arquivo);
 
+                nomesMetodosConsulta = new List<string>();
                 nomesMetodosConsulta = new ArquivoBO().BuscarNomeArquivosGravados();
                 PreencherTelaMetoodosWebService(nomesMetodosConsulta);
 
@@ -217,6 +223,11 @@ namespace TestConnectionWebServiceClient
             dgvMetodos.Columns["coluna1"].ReadOnly = true;
             dgvMetodos.Columns["coluna1"].Width = 197;
 
+            if(dgvMetodos.Rows.Count > 1)
+            {
+                dgvMetodos.Rows.Clear();
+            }
+
             if (nomeMetodosWebService != null && nomeMetodosWebService.Count > 0)
             {
                 foreach (var nome in nomeMetodosWebService)
@@ -233,8 +244,125 @@ namespace TestConnectionWebServiceClient
         {
             if (e.RowIndex >= 0 && dgvMetodos.Rows[e.RowIndex].Cells["coluna1"].Value != null)
             {
-                MessageBox.Show(dgvMetodos.Rows[e.RowIndex].Cells["coluna1"].Value.ToString());
+                ArquivoBO arquivoBO = new ArquivoBO();
+                Arquivo arquivo = new Arquivo();
+
+                string nomeMetodo = dgvMetodos.Rows[e.RowIndex].Cells["coluna1"].Value.ToString();
+
+                arquivo = arquivoBO.BuscarArquivoPorNome(nomeMetodo);
+
+                if (arquivo != null)
+                {
+                    txtNome.Text = arquivo.Nome;
+                    txtUrl.Text = arquivo.Url_Conexao;
+                    cmbMetodo.Text = arquivo.Tipo_Requisicao;
+
+                    if(arquivo.Tipo_Requisicao == MetodosWebService.POST.ToString())
+                    {
+                        lblBody.Visible = true;
+                        rtbBody.Visible = true;
+                    }
+                    else
+                    {
+                        lblBody.Visible = false;
+                        rtbBody.Visible = false;
+                    }
+
+                    if (arquivo.Sem_Autenticacao)
+                    {
+                        rdbSemAutenticacao.Checked = true;
+
+                        txtHeaderKeyA.Enabled = false;
+                        txtHeaderValueA.Enabled = false;
+                        txtHeaderKeyB.Visible = false;
+                        txtHeaderValueB.Visible = false;
+
+                        txtHeaderKeyA.Text = "";
+                        txtHeaderValueA.Text = "";
+                    }
+                    else if(arquivo.Com_Autenticacao)
+                    {
+                        rdbUserPass.Checked = true;
+
+                        txtHeaderKeyA.Enabled = true;
+                        txtHeaderValueA.Enabled = true;
+                        txtHeaderKeyB.Visible = false;
+                        txtHeaderValueB.Visible = false;
+
+                        txtHeaderKeyA.Text = arquivo.User_0;
+                        txtHeaderValueA.Text = arquivo.Password_0;
+                    }
+                    else if (arquivo.Autenticacao_Basic)
+                    {
+                        rdbBasic.Checked = true;
+
+                        txtHeaderKeyA.Enabled = true;
+                        txtHeaderValueA.Enabled = true;
+                        txtHeaderKeyB.Visible = false;
+                        txtHeaderValueB.Visible = false;
+
+                        txtHeaderKeyA.Text = arquivo.User_0;
+                        txtHeaderValueA.Text = arquivo.Password_0;
+                    }
+                    else
+                    {
+                        rdbHeader.Checked = true;
+
+                        txtHeaderKeyA.Enabled = true;
+                        txtHeaderValueA.Enabled = true;
+
+                        txtHeaderKeyB.Visible = true;
+                        txtHeaderValueB.Visible = true;
+                        txtHeaderKeyB.Enabled = true;
+                        txtHeaderValueB.Enabled = true;
+
+                        txtHeaderKeyA.Text = arquivo.User_0;
+                        txtHeaderValueA.Text = arquivo.Password_0;                        
+
+                        if(!string.IsNullOrEmpty(arquivo.User_1) && !string.IsNullOrEmpty(arquivo.Password_1))
+                        {
+                            txtHeaderKeyB.Text = arquivo.User_1;
+                            txtHeaderValueB.Text = arquivo.Password_1;                            
+                        }
+                    }
+
+                    txtContent.Text = arquivo.Content_Type;
+                    txtAgent.Text = arquivo.User_Agent;
+
+                    this.BuscarDadosWebService();
+                }
             }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtNome.Text = "";
+            txtUrl.Text = "";
+            cmbMetodo.Text = "";
+            txtHeaderKeyA.Text = "";
+            txtHeaderValueA.Text = "";
+            txtHeaderKeyA.Text = "";
+            txtHeaderValueA.Text = "";
+            txtHeaderKeyB.Text = "";
+            txtHeaderValueB.Text = "";
+            txtContent.Text = "";
+            txtAgent.Text = "";
+            rtbBody.Text = "";
+            rtbResultado.Text = "";
+
+            rdbSemAutenticacao.Checked = true;
+            rdbUserPass.Checked = false;
+            rdbBasic.Checked = false;
+            rdbHeader.Checked = false;
+
+            lblBody.Visible = false;
+            rtbBody.Visible = false;
+            txtHeaderKeyB.Visible = false;
+            txtHeaderValueB.Visible = false;
+
+            txtHeaderKeyA.Enabled = false;
+            txtHeaderValueA.Enabled = false;           
+
         }
     }
 }

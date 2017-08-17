@@ -54,6 +54,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvMetodos = new System.Windows.Forms.DataGridView();
             this.rtbResultado = new System.Windows.Forms.RichTextBox();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetodos)).BeginInit();
@@ -61,6 +62,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLimpar);
             this.groupBox1.Controls.Add(this.rtbBody);
             this.groupBox1.Controls.Add(this.lblBody);
             this.groupBox1.Controls.Add(this.rdbSemAutenticacao);
@@ -281,7 +283,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(83, 13);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(599, 20);
+            this.txtNome.Size = new System.Drawing.Size(532, 20);
             this.txtNome.TabIndex = 1;
             // 
             // label1
@@ -323,6 +325,16 @@
             this.rtbResultado.Size = new System.Drawing.Size(850, 291);
             this.rtbResultado.TabIndex = 13;
             this.rtbResultado.Text = "";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(621, 11);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(70, 23);
+            this.btnLimpar.TabIndex = 24;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // frmPrincipal
             // 
@@ -370,6 +382,7 @@
         private System.Windows.Forms.RichTextBox rtbBody;
         private System.Windows.Forms.Label lblBody;
         private System.Windows.Forms.DataGridView dgvMetodos;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }
 
