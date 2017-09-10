@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,11 +13,18 @@ namespace TestConnectionWebServiceUtil
 {
     public class Util
     {
-        private static string arquivoXml = @"D:\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceWeb\Models\Config\DadosConfig.config";
+        private static string arquivoXml = @"D:\Desenvolvimento\Visual Studio 2017\TestConnectionWebService\TestConnectionWebServiceWeb\Models\Config\DadosConfig.config";
 
         public static T Deserializar<T>(string json)
         {
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+
+            return result;
+        }
+
+        public static string Serealizar<T>(T classe)
+        {
+            var result = Newtonsoft.Json.JsonConvert.SerializeObject(classe);
 
             return result;
         }
@@ -26,14 +34,10 @@ namespace TestConnectionWebServiceUtil
             XmlDocument document = new XmlDocument();
             PropertyInfo[] propertyInfo = dados.GetType().GetProperties();
 
-            if (string.IsNullOrEmpty(arquivo))
-            {
-                document.Load(arquivoXml);
-            }
-            else
-            {
+            if (!string.IsNullOrEmpty(arquivo))
                 document.Load(arquivo);
-            }
+            else
+                document.Load(arquivoXml);
 
             XmlNode xml = document.SelectSingleNode(document.DocumentElement.Name);
 
@@ -42,17 +46,11 @@ namespace TestConnectionWebServiceUtil
                 string valor = xml.SelectSingleNode(info.Name).InnerText;
 
                 if (info.PropertyType == typeof(bool))
-                {
                     info.SetValue(dados, Convert.ToBoolean(valor), null);
-                }
                 else if (info.PropertyType == typeof(int))
-                {
                     info.SetValue(dados, Convert.ToInt32(valor), null);
-                }
                 else
-                {
                     info.SetValue(dados, valor, null);
-                }
             }
 
             return dados;
@@ -85,9 +83,7 @@ namespace TestConnectionWebServiceUtil
                 arquivo = string.Concat(diretorioArquivo, nomeArquivo);
 
                 if (!string.IsNullOrEmpty(arquivo))
-                {
                     File.Create(arquivo).Dispose();
-                }
             }
         }
 
